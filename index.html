@@ -353,7 +353,7 @@ function downloadCV(e) {
     el.textContent = 'Downloading... 0%';
     el.style.opacity = '0.6';
 
-    fetch(url).then(function(response) {
+    fetch(url, { cache: 'no-store' }).then(function(response) {
         var total = parseInt(response.headers.get('content-length'), 10) || 0;
         var loaded = 0;
         var reader = response.body.getReader();
