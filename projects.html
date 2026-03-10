@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Stephen Edwards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1><a href="index.html">Stephen Edwards</a></h1>
+    <p class="subtitle">AI Systems Architect &amp; Senior Software Engineer</p>
+    <p class="meta">
+        <span>London, UK &amp; Prague, Czech Republic</span>
+        <span>British</span>
+        <span><a href="tel:+447861938046" style="color: #8bacc8; text-decoration: none;">07861 938 046</a></span>
+        <span><a href="mailto:stephen.denis.edwards@gmail.com" style="color: #8bacc8; text-decoration: none;">stephen.denis.edwards@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/stephendedwards/" target="_blank" rel="noopener" style="color: #8bacc8; text-decoration: none;">LinkedIn</a></span>
+    </p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#clients">Clients</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section>
+        <h2>Open Source &amp; Projects</h2>
+
+        <div class="role">
+            <div class="role-header">
+                <div>
+                    <h3>Micro-X Agent</h3>
+                    <a href="https://github.com/StephenDenisEdwards/micro-x-agent-loop-python" target="_blank" rel="noopener" class="company" style="text-decoration: none;">github.com/StephenDenisEdwards/micro-x-agent-loop-python</a>
+                </div>
+                <span class="domain-badge">Python / AI Agent</span>
+            </div>
+            <p>A general-purpose AI agent that turns natural language into action. Built on the Model Context Protocol (MCP), Micro-X is an interactive REPL that streams LLM responses in real time, executes tools in parallel, and keeps API costs under control with a multi-layer cost reduction architecture.</p>
+            <ul>
+                <li>Multi-provider LLM support (Anthropic Claude &amp; OpenAI GPT) with streaming responses</li>
+                <li>Parallel tool execution via asyncio, automatic retry with exponential backoff</li>
+                <li>30+ MCP tool servers: Gmail, GitHub, LinkedIn, web search, WhatsApp, filesystem, and more</li>
+                <li>Layered cost reduction: prompt caching, on-demand tool discovery, conversation compaction, compiled mode</li>
+                <li>SQLite-backed session persistence with conversation resume, fork, and file checkpoint rewind</li>
+                <li>Continuous voice mode via Deepgram STT for hands-free operation</li>
+                <li>Trigger broker for scheduled autonomous agent runs via cron expressions</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">Python</span><span class="tag">asyncio</span><span class="tag">MCP</span><span class="tag">Claude API</span><span class="tag">OpenAI API</span><span class="tag">Deepgram</span><span class="tag">SQLite</span><span class="tag">TypeScript</span>
+            </div>
+        </div>
+
+        <div class="role">
+            <div class="role-header">
+                <div>
+                    <h3>Interview Assist</h3>
+                    <a href="https://github.com/StephenDenisEdwards/interview-assist-2" target="_blank" rel="noopener" class="company" style="text-decoration: none;">github.com/StephenDenisEdwards/interview-assist-2</a>
+                </div>
+                <span class="domain-badge">C# / Real-time AI</span>
+            </div>
+            <p>Real-time interview assistance application that captures audio, transcribes speech via Deepgram, and detects questions using LLM-based intent classification. Features a Terminal.Gui UI, session recording/playback, and an evaluation framework.</p>
+            <ul>
+                <li>Real-time audio capture (microphone + system loopback) with live transcription via Deepgram</li>
+                <li>LLM-based intent detection pipeline for identifying questions and objections during live calls</li>
+                <li>Terminal.Gui console UI with headless mode and reporting capabilities</li>
+                <li>Session recording/playback system for offline analysis and testing</li>
+                <li>Ground truth annotation tooling and evaluation framework for measuring detection accuracy</li>
+                <li>Modular architecture with separate libraries for core logic, Windows audio, and UI</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">C#</span><span class="tag">.NET 8</span><span class="tag">Deepgram</span><span class="tag">OpenAI</span><span class="tag">NAudio</span><span class="tag">Terminal.Gui</span><span class="tag">xUnit</span><span class="tag">TDD</span>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2026 Stephen Edwards. All rights reserved.
+</footer>
+
+</body>
+</html>
