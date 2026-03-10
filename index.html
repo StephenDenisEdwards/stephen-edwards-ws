@@ -14,7 +14,7 @@
     <p class="meta">
         <span>London, UK &amp; Prague, Czech Republic</span>
         <span>British</span>
-        <span><a href="tel:+447861938046" style="color: #8bacc8; text-decoration: none;">07861 938 046</a></span>
+        <span><a href="tel:+447861938046" style="color: #8bacc8; text-decoration: none;">+44 7861 938 046</a></span>
         <span><a href="mailto:stephen.denis.edwards@gmail.com" style="color: #8bacc8; text-decoration: none;">stephen.denis.edwards@gmail.com</a></span>
         <span><a href="https://www.linkedin.com/in/stephendedwards/" target="_blank" rel="noopener" style="color: #8bacc8; text-decoration: none;">LinkedIn</a></span>
     </p>
@@ -325,7 +325,7 @@
         <h2>Contact</h2>
         <p>Interested in working together? Feel free to get in touch.</p>
         <p style="margin-top: 0.75rem;">
-            <a href="tel:+447861938046" style="color: var(--accent); text-decoration: none; font-weight: 500;">07861 938 046</a>
+            <a href="tel:+447861938046" style="color: var(--accent); text-decoration: none; font-weight: 500;">+44 7861 938 046</a>
         </p>
         <p style="margin-top: 0.5rem;">
             <a href="mailto:stephen.denis.edwards@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 500;">stephen.denis.edwards@gmail.com</a>
@@ -355,7 +355,7 @@
     });
 
     function updateActive() {
-        var atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 50);
+        var atBottom = (window.innerHeight + window.pageYOffset) >= (document.documentElement.scrollHeight - 100);
         if (atBottom) {
             navLinks.forEach(function(link) { link.classList.remove('active'); });
             sections[sections.length - 1].link.classList.add('active');
