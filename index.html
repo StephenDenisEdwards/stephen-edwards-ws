@@ -353,6 +353,7 @@ function downloadCV(e) {
     el.textContent = 'Downloading... 0%';
     el.style.opacity = '0.6';
 
+    var blob;
     fetch(url, { cache: 'no-store' }).then(function(response) {
         var total = parseInt(response.headers.get('content-length'), 10) || 0;
         var loaded = 0;
@@ -373,7 +374,14 @@ function downloadCV(e) {
         }
 
         return read();
-    }).then(function(blob) {
+    }).then(function(b) {
+        blob = b;
+        el.textContent = 'Downloading... 50%';
+        return new Promise(function(r) { setTimeout(r, 400); });
+    }).then(function() {
+        el.textContent = 'Downloading... 100%';
+        return new Promise(function(r) { setTimeout(r, 400); });
+    }).then(function() {
         var a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = 'Stephen-Edwards-CV.docx';
