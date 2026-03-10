@@ -17,7 +17,7 @@
         <span><a href="tel:+447861938046" style="color: #8bacc8; text-decoration: none;">+44 7861 938 046</a></span>
         <span><a href="mailto:stephen.denis.edwards@gmail.com" style="color: #8bacc8; text-decoration: none;">stephen.denis.edwards@gmail.com</a></span>
         <span><a href="https://www.linkedin.com/in/stephendedwards/" target="_blank" rel="noopener" style="color: #8bacc8; text-decoration: none;">LinkedIn</a></span>
-        <span><a href="Stephen-Edwards-CV.docx" download id="cv-download" style="color: #8bacc8; text-decoration: none;" onclick="var el=this;el.textContent='Downloading\u2026';el.style.opacity='0.6';setTimeout(function(){el.textContent='Download CV';el.style.opacity='1';},3000);">Download CV</a></span>
+        <span><a href="Stephen-Edwards-CV.docx" id="cv-download" style="color: #8bacc8; text-decoration: none;" onclick="downloadCV(event)">Download CV</a></span>
     </p>
 </header>
 
@@ -346,6 +346,55 @@
 </footer>
 
 <script>
+function downloadCV(e) {
+    e.preventDefault();
+    var el = document.getElementById('cv-download');
+    var url = el.getAttribute('href');
+    el.textContent = 'Downloading... 0%';
+    el.style.opacity = '0.6';
+
+    fetch(url).then(function(response) {
+        var total = parseInt(response.headers.get('content-length'), 10) || 0;
+        var loaded = 0;
+        var reader = response.body.getReader();
+        var chunks = [];
+
+        function read() {
+            return reader.read().then(function(result) {
+                if (result.done) return new Blob(chunks);
+                chunks.push(result.value);
+                loaded += result.value.length;
+                if (total) {
+                    var pct = Math.round((loaded / total) * 100);
+                    el.textContent = 'Downloading... ' + pct + '%';
+                }
+                return read();
+            });
+        }
+
+        return read();
+    }).then(function(blob) {
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Stephen-Edwards-CV.docx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        el.textContent = 'Downloaded!';
+        setTimeout(function() {
+            el.textContent = 'Download CV';
+            el.style.opacity = '1';
+        }, 2000);
+    }).catch(function() {
+        el.textContent = 'Download failed';
+        setTimeout(function() {
+            el.textContent = 'Download CV';
+            el.style.opacity = '1';
+        }, 2000);
+    });
+}
+
 (function() {
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     const sections = [];
