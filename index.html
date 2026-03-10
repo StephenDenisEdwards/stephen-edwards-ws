@@ -355,6 +355,12 @@
     });
 
     function updateActive() {
+        var atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 50);
+        if (atBottom) {
+            navLinks.forEach(function(link) { link.classList.remove('active'); });
+            sections[sections.length - 1].link.classList.add('active');
+            return;
+        }
         let current = sections[0];
         for (let i = 0; i < sections.length; i++) {
             if (sections[i].section.getBoundingClientRect().top <= 120) {
