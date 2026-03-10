@@ -407,47 +407,30 @@ function downloadCV(e) {
 
 (function() {
     var navLinks = document.querySelectorAll('nav a[href^="#"]');
-    var navBar = document.querySelector('nav');
-    var linkMap = {};
-    navLinks.forEach(function(link) {
-        var id = link.getAttribute('href').substring(1);
-        linkMap[id] = link;
-    });
-
-    var currentId = null;
-    var visibleSections = {};
-
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            visibleSections[entry.target.id] = entry.isIntersecting;
-        });
-        var ids = Array.from(navLinks).map(function(l) { return l.getAttribute('href').substring(1); });
-        var found = null;
-        for (var i = 0; i < ids.length; i++) {
-            if (visibleSections[ids[i]]) { found = ids[i]; break; }
-        }
-        if (!found) {
-            var scrollY = window.pageYOffset;
-            var docHeight = document.documentElement.scrollHeight;
-            if (scrollY + window.innerHeight >= docHeight - 100) {
-                found = ids[ids.length - 1];
-            }
-        }
-        if (found && found !== currentId) {
-            currentId = found;
-            navLinks.forEach(function(link) { link.classList.remove('active'); });
-            if (linkMap[found]) linkMap[found].classList.add('active');
-        }
-    }, {
-        rootMargin: '-' + (navBar.offsetHeight + 10) + 'px 0px -40% 0px',
-        threshold: 0
-    });
-
+    var sections = [];
     navLinks.forEach(function(link) {
         var id = link.getAttribute('href').substring(1);
         var section = document.getElementById(id);
-        if (section) observer.observe(section);
+        if (section) sections.push({ link: link, section: section });
     });
+
+    function updateActive() {
+        var atBottom = (window.innerHeight + window.pageYOffset) >= (document.documentElement.scrollHeight - 100);
+        if (atBottom) {
+            navLinks.forEach(function(link) { link.classList.remove('active'); });
+            sections[sections.length - 1].link.classList.add('active');
+            return;
+        }
+        var navHeight = document.querySelector('nav').offsetHeight;
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+            if (sections[i].section.getBoundingClientRect().top <= navHeight + 20) {
+                current = sections[i];
+            }
+        }
+        navLinks.forEach(function(link) { link.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    }
 
     var backToTop = document.getElementById('back-to-top');
     var header = document.querySelector('header');
@@ -461,7 +444,11 @@ function downloadCV(e) {
         }
     }
 
-    window.addEventListener('scroll', updateBackToTop);
+    window.addEventListener('scroll', function() {
+        updateActive();
+        updateBackToTop();
+    });
+    updateActive();
     updateBackToTop();
 })();
 </script>
