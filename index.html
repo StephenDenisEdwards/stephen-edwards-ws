@@ -17,7 +17,7 @@
         <span><a href="tel:+447861938046" style="color: #8bacc8; text-decoration: none;">+44 7861 938 046</a></span>
         <span><a href="mailto:stephen.denis.edwards@gmail.com" style="color: #8bacc8; text-decoration: none;">stephen.denis.edwards@gmail.com</a></span>
         <span><a href="https://www.linkedin.com/in/stephendedwards/" target="_blank" rel="noopener" style="color: #8bacc8; text-decoration: none;">LinkedIn</a></span>
-        <span><a href="Stephen-Edwards-CV.docx" id="cv-download" style="color: #8bacc8; text-decoration: none; font-weight: 700;" onclick="downloadCV(event)">Download CV</a></span>
+        <span><a href="Stephen%20Edwards%20CV-April-2026.docx" id="cv-download" style="color: #8bacc8; text-decoration: none; font-weight: 700;" onclick="downloadCV(event)">Download CV</a></span>
     </p>
 </header>
 
@@ -50,6 +50,10 @@
     <section id="skills">
         <h2>Technical Skills</h2>
         <div class="skills-grid">
+            <div class="skill-card">
+                <h3>AI-Augmented Development</h3>
+                <p>Leveraging AI development tools such as Codex and Claude-Code to enhance engineering productivity, accelerate prototyping, and assist with software design, refactoring, and implementation decisions &mdash; used as developer copilots rather than replacements for architectural judgement.</p>
+            </div>
             <div class="skill-card">
                 <h3>AI &amp; Generative AI</h3>
                 <ul>
@@ -140,23 +144,31 @@
             <div class="role-header">
                 <div>
                     <h3>Senior Software Architect &amp; Engineer &mdash; AI/ML</h3>
-                    <span class="company">AI Agent Platform &amp; Medical Sales Call Enablement (PoC)</span>
+                    <span class="company">Constraint Reasoning Engine (PoC), AI Agent Platform &amp; Medical Sales Call Enablement (PoC)</span>
                 </div>
                 <div>
                     <span class="date">Oct 2024 &mdash; Present</span><br>
                     <span class="domain-badge">AI / Healthcare</span>
                 </div>
             </div>
-            <p>Architected a real-time LLM-powered assistant for medical sales calls, integrating speech recognition, RAG-based knowledge retrieval, and contextual AI guidance.</p>
+            <p><strong>Cabinet Hardware Constraint Reasoning Engine (PoC).</strong> Designed and built, as sole engineer, a deterministic constraint reasoning engine for multi-brand cabinet hardware compatibility &mdash; intended as the reasoning and safety-net layer beneath an LLM-driven conversational sales experience.</p>
+            <ul>
+                <li>Modelled the domain in Pydantic v2 with strictly enumerated fields and implemented 14 constraint rules as a single source of truth</li>
+                <li>Built a solver that pre-filters candidates and exhaustively evaluates every product combination, producing full rule traces so the conversational layer can explain why a configuration was recommended or rejected</li>
+                <li>Extended the design into a generic multi-family prototype with a flat N-candidate solver covering single, paired, and multi-product families through one algorithm</li>
+                <li>Delivered a real catalogue across three manufacturers, 70+ pytest tests, a FastAPI demo, and full architectural documentation</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Agent Platform &amp; Medical Sales Assistant.</strong> Architected and implemented a production-grade Generative AI agent platform and real-time LLM assistant, delivered end-to-end as a solo engineer across Python, C#, and TypeScript, integrating speech recognition, RAG pipelines, and contextual AI guidance.</p>
             <ul>
                 <li>Built a streaming AI agent loop with parallel tool execution, automatic retry, and conversation compaction</li>
-                <li>Created 30+ process-isolated TypeScript MCP servers (Gmail, GitHub, LinkedIn, web search, WhatsApp)</li>
-                <li>Implemented multi-provider LLM abstraction (Claude, GPT), continuous voice mode via Deepgram, and SQLite session persistence</li>
-                <li>Developed real-time audio pipeline with Azure Speech, Whisper, and Gemini Live for low-latency transcription</li>
-                <li>Designed RAG pipeline using Azure AI Search and FAISS with vector embedding ingestion for product documentation</li>
+                <li>Created 30+ process-isolated TypeScript MCP servers (Gmail, GitHub, LinkedIn, web search, WhatsApp) with structured JSON output and Zod validation</li>
+                <li>Implemented multi-provider LLM abstraction (Claude, GPT), continuous voice mode via Deepgram, SQLite session persistence, and on-demand tool discovery</li>
+                <li>Developed real-time audio pipeline (microphone + loopback) with Azure Speech, Whisper, and Gemini Live for low-latency transcription during live calls</li>
+                <li>Designed RAG pipeline using Azure AI Search and FAISS &mdash; built vector embedding ingestion for product documentation, evaluated chunking strategies and retrieval ranking to optimise relevance within real-time latency constraints</li>
+                <li>Maintained 15+ ADRs and a full Software Architecture Document</li>
             </ul>
             <div class="tags">
-                <span class="tag">Python</span><span class="tag">C#</span><span class="tag">TypeScript</span><span class="tag">Claude API</span><span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">MCP</span><span class="tag">Deepgram</span><span class="tag">WebSockets</span>
+                <span class="tag">Python 3.14</span><span class="tag">C#</span><span class="tag">TypeScript</span><span class="tag">Pydantic v2</span><span class="tag">FastAPI</span><span class="tag">pytest</span><span class="tag">Claude API</span><span class="tag">OpenAI</span><span class="tag">Gemini</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">MCP</span><span class="tag">Deepgram</span><span class="tag">WebSockets</span>
             </div>
         </div>
 
